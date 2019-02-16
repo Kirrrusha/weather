@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import './style.scss';
 
 class CustomPopup extends Component {
 
@@ -8,10 +9,8 @@ class CustomPopup extends Component {
     weather: PropTypes.object
   };
 
-
-  state = {};
-
   render() {
+    console.log(this.props);
     const {
       translate,
       weather: {
@@ -27,15 +26,15 @@ class CustomPopup extends Component {
       <div className='popup'>
         <div className='popup-title'>{translate ? translate.data[0] : name}</div>
         <div className='popup-humidity'>Влажность: <b>{humidity}%</b></div>
-        <div className='popup-humidity'>Давление: <b>{pressure}мм.рт.ст</b></div>
-        <div className='popup-humidity'>Температура: <b>{temp}&#8451;</b> ({temp_min}&#8451; - {temp_max}&#8451;)
+        <div className='popup-humidity'>Давление: <b>{+pressure * 0.75} мм.рт.ст</b></div>
+        <div className='popup-humidity'>Температура: <b>{temp}&#8451;</b> ({temp_min}&#8451; — {temp_max}&#8451;)
         </div>
         <div className='popup-weather'>
-          <img src={srcImg} />
+          <img src={srcImg} alt={''} />
           <span><b>{translate ? translate.data[1] : null}</b></span>
         </div>
         <div className='popup-wind'>
-          <span>{speed}м/с, {this.directionWind(deg)}</span>
+          <span>Ветер: {speed}м/с, {this.directionWind(deg)}</span>
         </div>
       </div>
     );

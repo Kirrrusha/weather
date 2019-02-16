@@ -1,0 +1,11 @@
+.popup {
+
+  &-title {
+    font-size: 20px;
+  }
+
+  &-weather {
+    display: flex;
+    align-items: center;
+  }
+}

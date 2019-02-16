@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {getTranslate, getWeatherByCoords} from '../../modules/actions';
-import MapPage from '../../pages/MapPage';
+import {getTranslate, getWeather} from '../modules/actions';
+import MapPage from '../pages/MapPage';
 
 
 const mapStateToProps = state => ({
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getWeatherByCoords: (params) => dispatch(getWeatherByCoords(params)),
+  getWeather: (params) => dispatch(getWeather(params)),
   getTranslate: (params) => dispatch(getTranslate(params))
 });
 
