@@ -1,4 +1,5 @@
-import {FAILURE, GET_TRANSLATE, REQUEST, SUCCESS} from '../../utils/const';
+import {FAILURE, GET_TRANSLATE, GET_WEATHER, REQUEST, SUCCESS} from '../../utils/const';
+import {changeState} from '../helpers/translate';
 
 const initialState = {
   data: null,
@@ -30,6 +31,7 @@ export default (state = initialState, action) => {
         loading: false,
         data: payload
       };
+
     default:
       return state;
   }

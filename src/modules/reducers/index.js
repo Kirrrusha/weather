@@ -4,5 +4,5 @@ import translate from './translate';
 
 export default combineReducers({
   weather,
-  translate
+  // translate
 })

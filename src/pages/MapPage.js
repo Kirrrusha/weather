@@ -45,7 +45,7 @@ class MapPage extends Component {
 
   weatherInformation = () => {
     const {weather, getTranslate} = this.props;
-    getTranslate([weather.name, weather.weather[0].description]);
+    // getTranslate([weather.name, weather.weather[0].description]);
     this.setState({weather});
   };
 

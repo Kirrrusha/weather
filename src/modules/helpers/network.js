@@ -13,3 +13,18 @@ export const httpGet = async endPoint => {
     console.warn('httpGet error ', err);
   }
 };
+
+export const httpGet1 = async endPoint => {
+  console.log(endPoint)
+  try {
+    const response = await fetch(endPoint);
+    if (response.ok) {
+      const json = await response.json();
+      return json;
+    } else {
+      throw new Error(response.status);
+    }
+  } catch (err) {
+    console.warn('httpGet error ', err);
+  }
+};

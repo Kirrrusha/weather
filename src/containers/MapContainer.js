@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getWeather: (params) => dispatch(getWeather(params)),
-  getTranslate: (params) => dispatch(getTranslate(params))
+  // getTranslate: (params) => dispatch(getTranslate(params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapPage);
