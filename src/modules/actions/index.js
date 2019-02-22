@@ -55,7 +55,6 @@ export function getWeather(data) {
 export function getTranslate(data) {
   console.log(data);
   return (dispatch) => {
-    console.log('1');
     dispatch({
       type: GET_TRANSLATE + REQUEST,
     });
