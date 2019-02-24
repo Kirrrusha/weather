@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log(action);
+  console.log('action', action);
   const {type, payload} = action;
   switch (type) {
     case GET_WEATHER + REQUEST:
@@ -21,7 +21,8 @@ export default (state = initialState, action) => {
     case GET_WEATHER + SUCCESS:
       return {
         ...state,
-        data: payload
+        error: '',
+        loading: true
       };
 
     case GET_WEATHER + FAILURE:
@@ -42,7 +43,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: changeState(state, payload)
+        data: payload
       };
 
     case GET_TRANSLATE + FAILURE:

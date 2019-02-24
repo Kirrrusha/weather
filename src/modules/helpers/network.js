@@ -1,30 +1,20 @@
-import {API_WEATHER, TOKEN_WEATHER} from '../../utils/default';
+export const httpGet = endPoint => new Promise((resolve, reject) => {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', endPoint, true);
 
-export const httpGet = async endPoint => {
-  try {
-    const response = await fetch(`${API_WEATHER}?${endPoint}&units=metric&APPID=${TOKEN_WEATHER}`);
-    if (response.ok) {
-      const json = await response.json();
-      return json;
+  xhr.onload = function() {
+    if (this.status === 200) {
+      resolve(this.response);
     } else {
-      throw new Error(response.status);
+      const error = new Error(this.statusText);
+      error.code = this.status;
+      reject(error);
     }
-  } catch (err) {
-    console.warn('httpGet error ', err);
-  }
-};
+  };
 
-export const httpGet1 = async endPoint => {
-  console.log(endPoint)
-  try {
-    const response = await fetch(endPoint);
-    if (response.ok) {
-      const json = await response.json();
-      return json;
-    } else {
-      throw new Error(response.status);
-    }
-  } catch (err) {
-    console.warn('httpGet error ', err);
-  }
-};
+  xhr.onerror = function() {
+    reject(new Error("Network Error"));
+  };
+
+  xhr.send();
+});

@@ -8,7 +8,6 @@ class MapPage extends Component {
 
   static propTypes = {
     getWeather: PropTypes.func,
-    getTranslate: PropTypes.func
   };
 
   state = {
@@ -19,10 +18,9 @@ class MapPage extends Component {
   };
 
   render() {
-    const {translate, weather} = this.props;
+    const {weather} = this.props;
     const {lat, lng, zoom, marker} = this.state;
     const position = [lat, lng];
-    console.log('translate', translate);
     return (
       <LeafletMap
         center={position}
@@ -33,9 +31,9 @@ class MapPage extends Component {
           url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
         {marker.map((position, idx) =>
-          <Marker key={`marker-${idx}`} position={position} onClick={this.weatherInformation}>
+          <Marker key={`marker-${idx}`} position={position}>
             <Popup>
-              <CustomPopup translate={translate} weather={weather} />
+              <CustomPopup weather={weather} />
             </Popup>
           </Marker>
         )}
@@ -43,14 +41,7 @@ class MapPage extends Component {
     );
   }
 
-  weatherInformation = () => {
-    const {weather, getTranslate} = this.props;
-    // getTranslate([weather.name, weather.weather[0].description]);
-    this.setState({weather});
-  };
-
   addMarker = e => {
-    console.log('props', this.props);
     const {getWeather} = this.props;
     let {marker} = this.state;
     marker = [];
